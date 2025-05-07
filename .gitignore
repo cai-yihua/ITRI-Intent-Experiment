@@ -1,0 +1,7 @@
+result/
+venv/
+verify_dataset/
+dataset/
+
+*.env
+__pycache__
