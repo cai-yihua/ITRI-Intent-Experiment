@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 # ---------- 讀取組態 ----------
 with Path("config.json").open(encoding="utf-8") as f:
     conf = json.load(f)
-generate_count = conf["generate_count"]
+GENERATE_COUNT = conf["GENERATE_COUNT"]
 INTENT_MAP = conf.get("INTENT_MAP")
 INTENT_INDEX = {v: k for k, v in INTENT_MAP.items()}
 
@@ -70,7 +70,7 @@ def trigger_workflow(
         "inputs": {
             "conversation_uid": conv_uid,
             "stage": stage,
-            "generate_count": generate_count,
+            "generate_count": GENERATE_COUNT,
             "intent_type": intent_type,
         },
         "response_mode": "streaming",
@@ -153,7 +153,7 @@ if __name__ == "__main__":
         try:
             result = trigger_workflow(
                 intent_code=code,
-                generate_count=generate_count,
+                generate_count=GENERATE_COUNT,
                 stage="gen_dataset",
                 query=intent,
             )
