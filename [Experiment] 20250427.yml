@@ -1,0 +1,1204 @@
+app:
+  description: v1.0
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: '[Experiment] 20250427'
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai:0.0.19@6b2b2e115b1b9d34a63eb26fadcc33d74330fd2ec06071bb30b8a24b1fab107a
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/gemini:0.1.5@012c9e0467a11910db974e0436348e93a376fdc96381946a3db2c56708377381
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables:
+  - description: ''
+    id: 2dfeb785-9b24-42f0-9c8c-c041a7756c55
+    name: conversation_uid
+    selector:
+    - conversation
+    - conversation_uid
+    value: ''
+    value_type: string
+  environment_variables:
+  - description: ''
+    id: 601d978d-07d6-4b2f-a009-796e887c956c
+    name: intent_experiment_backend
+    selector:
+    - env
+    - intent_experiment_backend
+    value: http://140.118.162.92:8000
+    value_type: string
+  - description: ''
+    id: 0cafe3ba-baf3-47e2-8189-d3e075df1d34
+    name: Interference_UE_Execute_PATH
+    selector:
+    - env
+    - Interference_UE_Execute_PATH
+    value: 71279998-7aa1-4819-b2d6-3287b435fa5f
+    value_type: string
+  - description: ''
+    id: 342203c4-3f69-47ba-91c0-87e2d6ff24d0
+    name: Interference_UE_Predict_PATH
+    selector:
+    - env
+    - Interference_UE_Predict_PATH
+    value: d4f93f32-a552-41ae-a7d4-56e1907b41a5
+    value_type: string
+  - description: ''
+    id: e6be9088-dfb7-49f8-9a66-d14ebaa82da4
+    name: Query_UE_Throughput_PATH
+    selector:
+    - env
+    - Query_UE_Throughput_PATH
+    value: d9c7c32d-5147-4c09-8c20-0762307b1e3b
+    value_type: string
+  - description: ''
+    id: 66e62211-c56f-463e-8b23-0a7dcef15e34
+    name: SINR_PATH
+    selector:
+    - env
+    - SINR_PATH
+    value: 1f7d9e8a-ebe1-4cf0-93dc-d4b9f54ea3b1
+    value_type: string
+  - description: ''
+    id: 6060580f-cbbd-4f6d-8158-deaf07342542
+    name: MITLAB_BACKEND
+    selector:
+    - env
+    - MITLAB_BACKEND
+    value: http://172.24.20.17:30000/api/v1.0/
+    value_type: string
+  - description: ''
+    id: df6b16f3-b5d7-4738-a409-8f58fd95c46d
+    name: N8N_ACTIVE_BASE_URL
+    selector:
+    - env
+    - N8N_ACTIVE_BASE_URL
+    value: http://172.24.16.1:30000/webhook/
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions: []
+      allowed_file_types:
+      - video
+      - audio
+      - image
+      - document
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: true
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 1
+    opening_statement: 你好，我是ITRI SMO虛擬助理
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1742442590290-source-17457489326400-target
+      selected: false
+      source: '1742442590290'
+      sourceHandle: source
+      target: '17457489326400'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 17457489326400-true-17457489269900-target
+      selected: false
+      source: '17457489326400'
+      sourceHandle: 'true'
+      target: '17457489269900'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17457489269900-source-17457488818334-target
+      selected: false
+      source: '17457489269900'
+      sourceHandle: source
+      target: '17457488818334'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1742447067053-source-17459964020720-target
+      selected: false
+      source: '1742447067053'
+      sourceHandle: source
+      target: '17459964020720'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: if-else
+      id: 17457489326400-false-1746000589347-target
+      selected: false
+      source: '17457489326400'
+      sourceHandle: 'false'
+      target: '1746000589347'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1746000589347-true-1742447067053-target
+      selected: false
+      source: '1746000589347'
+      sourceHandle: 'true'
+      target: '1742447067053'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1746000589347-efc9690a-1e9a-4643-a613-7578761c7d54-17460003284011-target
+      selected: false
+      source: '1746000589347'
+      sourceHandle: efc9690a-1e9a-4643-a613-7578761c7d54
+      target: '17460003284011'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1746000589347-62ff8ed7-7217-4d05-a142-634fb9bedd67-17460003390661-target
+      selected: false
+      source: '1746000589347'
+      sourceHandle: 62ff8ed7-7217-4d05-a142-634fb9bedd67
+      target: '17460003390661'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17460003284011-source-17460003284012-target
+      selected: false
+      source: '17460003284011'
+      sourceHandle: source
+      target: '17460003284012'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17460003390661-source-17460003390662-target
+      selected: false
+      source: '17460003390661'
+      sourceHandle: source
+      target: '17460003390662'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1746000589347-59fe9f1b-5828-4735-977a-13eac9158db5-17460091772471-target
+      selected: false
+      source: '1746000589347'
+      sourceHandle: 59fe9f1b-5828-4735-977a-13eac9158db5
+      target: '17460091772471'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1746000589347-540c84a1-531f-45a9-854d-1f7c4792074c-17460095778581-target
+      selected: false
+      source: '1746000589347'
+      sourceHandle: 540c84a1-531f-45a9-854d-1f7c4792074c
+      target: '17460095778581'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1746000589347-d97ba9b5-bbc5-4978-b254-05ff2219f724-17460096565521-target
+      selected: false
+      source: '1746000589347'
+      sourceHandle: d97ba9b5-bbc5-4978-b254-05ff2219f724
+      target: '17460096565521'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17460091772471-source-17460091772472-target
+      selected: false
+      source: '17460091772471'
+      sourceHandle: source
+      target: '17460091772472'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17460095778581-source-17460095778582-target
+      selected: false
+      source: '17460095778581'
+      sourceHandle: source
+      target: '17460095778582'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17460096565521-source-17460096565522-target
+      selected: false
+      source: '17460096565521'
+      sourceHandle: source
+      target: '17460096565522'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1746000589347-1aaf0de3-fafc-4f6a-8c04-38cd5346612a-17466196916451-target
+      selected: false
+      source: '1746000589347'
+      sourceHandle: 1aaf0de3-fafc-4f6a-8c04-38cd5346612a
+      target: '17466196916451'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17466196916451-source-17466196916452-target
+      source: '17466196916451'
+      sourceHandle: source
+      target: '17466196916452'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 開始
+        type: start
+        variables:
+        - label: stage
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: stage
+        - label: generate_count
+          max_length: 48
+          options: []
+          required: false
+          type: text-input
+          variable: generate_count
+        - label: intent_type
+          max_length: 48
+          options: []
+          required: false
+          type: text-input
+          variable: intent_type
+        - label: text
+          max_length: 200
+          options: []
+          required: false
+          type: text-input
+          variable: text
+        - label: model
+          max_length: 48
+          options: []
+          required: false
+          type: text-input
+          variable: model
+      height: 194
+      id: '1742442590290'
+      position:
+        x: 2501.2465032321124
+        y: -64.8398168025917
+      positionAbsolute:
+        x: 2501.2465032321124
+        y: -64.8398168025917
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: test
+        desc: ''
+        height: 236
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"意圖處理階段","type":"text","version":1}],"direction":"ltr","format":"left","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ' (1)'
+        type: ''
+        width: 1098
+      height: 236
+      id: '17424430040480'
+      position:
+        x: 3651.5189038176823
+        y: -171.75450182186296
+      positionAbsolute:
+        x: 3651.5189038176823
+        y: -171.75450182186296
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 1098
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.9
+          mode: chat
+          name: gpt-4o
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 09ddf340-a502-4a03-89b5-b69469d3d650
+          role: system
+          text: "你是一位意圖分類器。請仔細閱讀「輸入文本」，並根據下方【意圖定義】選出**唯一**最符合的意圖；若完全不符，請標為 **\"None\"\
+            **。\n輸入文本：{{#1742442590290.text#}}\n【意圖定義】\n查看UE的吞吐量\n - 查詢或篩選 UE 之連線狀態、訊號品質、吞吐量統計。\
+            \  \n查詢 Cell 裡面的 SINR 熱圖\n - 取得 Cell 內 SINR 數值、分布或視覺化（SINR Map）。  \n干擾演算法預測\n\
+             - 使用干擾抑制／優化演算法做預測、評估或建議。  \n干擾演算法執行\n - 直接執行干擾抑制演算法，進行優化動作。\n\n【輸出格式】\
+            \  \n符合其一：\n{\n  \"intent\": \"<意圖名稱>\", \n  \"reason\": \"<簡述歸類依據>\"\n\
+            }\n\n全不符合：\n{\n  \"intent\": \"None\",\n  \"reason\": \"<簡述原因>\"\n}\n\
+            請嚴格遵守以上 JSON 格式，除了 JSON 內容外不得輸出任何其他文字。"
+        selected: true
+        title: '[LLM 處理] 文本轉單一意圖器 4o'
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1742447067053'
+      position:
+        x: 3679.316010933301
+        y: -96.10121950219957
+      positionAbsolute:
+        x: 3679.316010933301
+        y: -96.10121950219957
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: test
+        desc: ''
+        height: 254
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"文本生成階段","type":"text","version":1}],"direction":"ltr","format":"left","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: '  (2)'
+        type: ''
+        width: 1102
+      height: 254
+      id: '17457488818311'
+      position:
+        x: 3226.9424614212594
+        y: -517.2626654954415
+      positionAbsolute:
+        x: 3226.9424614212594
+        y: -517.2626654954415
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 1102
+    - data:
+        answer: '{{#17457489269900.text#}}
+
+          '
+        desc: ''
+        selected: false
+        title: '[回覆] 文本產生器'
+        type: answer
+        variables: []
+      height: 105
+      id: '17457488818334'
+      position:
+        x: 3651.816601411014
+        y: -441.60938317577813
+      positionAbsolute:
+        x: 3651.816601411014
+        y: -441.60938317577813
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-2.0-flash-lite
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: 09ddf340-a502-4a03-89b5-b69469d3d650
+          role: system
+          text: "任務說明\n請依「文本生成數量」與「目標意圖」產出符合 意圖列表 之繁體中文句子。\n每句須為直述句或祈使句。\n必須完全符合所屬意圖的行為定義。\n\
+            文本生成數量：{{#1742442590290.generate_count#}}\n目標意圖：{{#1742442590290.intent_type#}}\n\
+            \n\n意圖列表\n1.查看 UE 的吞吐量\n透過 API 取得／過濾單一或多個 UE 的連線狀態、訊號品質、Throughput 等統計。\n\
+            例：「查詢 UE-123 的下行吞吐量」；「列出所有 UE 的平均 Throughput 與 RSRP」\n2.查詢 Cell 的 SINR\
+            \ 熱圖\n針對指定 Cell 取得 SINR 數值及空間分佈，或回傳視覺化 (SINR Map)。\n例：「顯示 Cell-A 的 SINR\
+            \ Map」；「取得 700–710 MHz 區段的 SINR 分佈」\n3.干擾演算法預測\n以干擾抑制演算法對指定場域做效能預測／優化建議。\n\
+            例：「預測啟用 X 演算法後的整體 Throughput」；「評估室內小區的干擾改善效果」\n4.干擾演算法執行\n直接執行或套用干擾抑制演算法以降低干擾、提升網路效能。\n\
+            例：「對 Cell-B 套用 Y 演算法」；「啟用預設干擾抑制參數」\n5.None\n需求不屬於上述四類時歸類於此；仍與網路管理功能相關。\n\
+            例：「查看最近 24 小時的網路告警」；「重啟基站服務」\n\n\n輸出格式\n僅輸出下列 JSON 陣列，不要添加任何額外文字：\njson\n\
+            複製編輯[\n  { \"intent\": \"{{#1742442590290.intent_type#}}\", \"text\":\
+            \ \"…\" },\n  { \"intent\": \"{{#1742442590290.intent_type#}}\", \"text\"\
+            : \"…\" }\n]\n"
+        selected: false
+        title: '[LLM 處理] 文本產生器'
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17457489269900'
+      position:
+        x: 3254.9480145684893
+        y: -441.60938317577813
+      positionAbsolute:
+        x: 3254.9480145684893
+        y: -441.60938317577813
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: bf0d6b33-24ef-423f-9ba1-50fbe2f5191b
+            value: gen_dataset
+            varType: string
+            variable_selector:
+            - '1742442590290'
+            - stage
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: '[決策] 產生狀態判斷器'
+        type: if-else
+      height: 126
+      id: '17457489326400'
+      position:
+        x: 2807.0301391953785
+        y: -64.8398168025917
+      positionAbsolute:
+        x: 2807.0301391953785
+        y: -64.8398168025917
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1742447067053.text#}}'
+        desc: ''
+        selected: false
+        title: '[回覆] 文本轉單一意圖器'
+        type: answer
+        variables: []
+      height: 105
+      id: '17459964020720'
+      position:
+        x: 4076.1845977758258
+        y: -96.10121950219957
+      positionAbsolute:
+        x: 4076.1845977758258
+        y: -96.10121950219957
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: test
+        desc: ''
+        height: 236
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"意圖處理階段","type":"text","version":1}],"direction":"ltr","format":"left","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: '  (2)'
+        type: ''
+        width: 1098
+      height: 236
+      id: '17460003284010'
+      position:
+        x: 3652.347922324026
+        y: 98.73525318933844
+      positionAbsolute:
+        x: 3652.347922324026
+        y: 98.73525318933844
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 1098
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.9
+          mode: chat
+          name: gpt-4o-mini
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 09ddf340-a502-4a03-89b5-b69469d3d650
+          role: system
+          text: "你是一位意圖分類器。請仔細閱讀「輸入文本」，並根據下方【意圖定義】選出**唯一**最符合的意圖；若完全不符，請標為 **\"None\"\
+            **。\n輸入文本：{{#1742442590290.text#}}\n【意圖定義】\n查看UE的吞吐量\n - 查詢或篩選 UE 之連線狀態、訊號品質、吞吐量統計。\
+            \  \n查詢 Cell 裡面的 SINR 熱圖\n - 取得 Cell 內 SINR 數值、分布或視覺化（SINR Map）。  \n干擾演算法預測\n\
+             - 使用干擾抑制／優化演算法做預測、評估或建議。  \n干擾演算法執行\n - 直接執行干擾抑制演算法，進行優化動作。\n\n【輸出格式】\
+            \  \n符合其一：\n{\n  \"intent\": \"<意圖名稱>\", \n  \"reason\": \"<簡述歸類依據>\"\n\
+            }\n\n全不符合：\n{\n  \"intent\": \"None\",\n  \"reason\": \"<簡述原因>\"\n}\n\
+            請嚴格遵守以上 JSON 格式，除了 JSON 內容外不得輸出任何其他文字。"
+        selected: false
+        title: '[LLM 處理] 文本轉單一意圖器 4omini'
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17460003284011'
+      position:
+        x: 3688.9537009743754
+        y: 174.38853550900177
+      positionAbsolute:
+        x: 3688.9537009743754
+        y: 174.38853550900177
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17460003284011.text#}}'
+        desc: ''
+        selected: false
+        title: '[回覆] 文本轉單一意圖器 (1)'
+        type: answer
+        variables: []
+      height: 105
+      id: '17460003284012'
+      position:
+        x: 4077.0136162821696
+        y: 174.38853550900177
+      positionAbsolute:
+        x: 4077.0136162821696
+        y: 174.38853550900177
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: test
+        desc: ''
+        height: 236
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"意圖處理階段","type":"text","version":1}],"direction":"ltr","format":"left","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: '  (2)'
+        type: ''
+        width: 1098
+      height: 236
+      id: '17460003390660'
+      position:
+        x: 3653.496620679023
+        y: 382.46374687360554
+      positionAbsolute:
+        x: 3653.496620679023
+        y: 382.46374687360554
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 1098
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.9
+          mode: chat
+          name: gpt-4.1
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 09ddf340-a502-4a03-89b5-b69469d3d650
+          role: system
+          text: "你是一位意圖分類器。請仔細閱讀「輸入文本」，並根據下方【意圖定義】選出**唯一**最符合的意圖；若完全不符，請標為 **\"None\"\
+            **。\n輸入文本：{{#1742442590290.text#}}\n【意圖定義】\n查看UE的吞吐量\n - 查詢或篩選 UE 之連線狀態、訊號品質、吞吐量統計。\
+            \  \n查詢 Cell 裡面的 SINR 熱圖\n - 取得 Cell 內 SINR 數值、分布或視覺化（SINR Map）。  \n干擾演算法預測\n\
+             - 使用干擾抑制／優化演算法做預測、評估或建議。  \n干擾演算法執行\n - 直接執行干擾抑制演算法，進行優化動作。\n\n【輸出格式】\
+            \  \n符合其一：\n{\n  \"intent\": \"<意圖名稱>\", \n  \"reason\": \"<簡述歸類依據>\"\n\
+            }\n\n全不符合：\n{\n  \"intent\": \"None\",\n  \"reason\": \"<簡述原因>\"\n}\n\
+            請嚴格遵守以上 JSON 格式，除了 JSON 內容外不得輸出任何其他文字。"
+        selected: false
+        title: '[LLM 處理] 文本轉單一意圖器 4.1'
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17460003390661'
+      position:
+        x: 3679.316010933301
+        y: 458.1170291932689
+      positionAbsolute:
+        x: 3679.316010933301
+        y: 458.1170291932689
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17460003390661.text#}}'
+        desc: ''
+        selected: false
+        title: '[回覆] 文本轉單一意圖器 (1)'
+        type: answer
+        variables: []
+      height: 105
+      id: '17460003390662'
+      position:
+        x: 4078.1623146371667
+        y: 458.1170291932689
+      positionAbsolute:
+        x: 4078.1623146371667
+        y: 458.1170291932689
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: e2b5785c-2338-42fa-a72d-14b6a2ee5b22
+            value: gpt-4o
+            varType: string
+            variable_selector:
+            - '1742442590290'
+            - model
+          id: 'true'
+          logical_operator: and
+        - case_id: efc9690a-1e9a-4643-a613-7578761c7d54
+          conditions:
+          - comparison_operator: is
+            id: c8ea85d2-189a-4c07-90a8-8a4685c04dd0
+            value: gpt-4o-mini
+            varType: string
+            variable_selector:
+            - '1742442590290'
+            - model
+          id: efc9690a-1e9a-4643-a613-7578761c7d54
+          logical_operator: and
+        - case_id: 62ff8ed7-7217-4d05-a142-634fb9bedd67
+          conditions:
+          - comparison_operator: is
+            id: 419cc255-4b8e-4289-a3c3-3c7904d1999f
+            value: gpt-4.1
+            varType: string
+            variable_selector:
+            - '1742442590290'
+            - model
+          id: 62ff8ed7-7217-4d05-a142-634fb9bedd67
+          logical_operator: and
+        - case_id: 59fe9f1b-5828-4735-977a-13eac9158db5
+          conditions:
+          - comparison_operator: contains
+            id: f19ba847-abf9-44d3-9242-01079f135dcc
+            value: gemini-2.0-flash
+            varType: string
+            variable_selector:
+            - '1742442590290'
+            - model
+          id: 59fe9f1b-5828-4735-977a-13eac9158db5
+          logical_operator: and
+        - case_id: 540c84a1-531f-45a9-854d-1f7c4792074c
+          conditions:
+          - comparison_operator: contains
+            id: 7ecd463b-1530-4fe6-a7bb-9134020bd9ee
+            value: gemini-2.5-flash-preview-04-17
+            varType: string
+            variable_selector:
+            - '1742442590290'
+            - model
+          id: 540c84a1-531f-45a9-854d-1f7c4792074c
+          logical_operator: and
+        - case_id: d97ba9b5-bbc5-4978-b254-05ff2219f724
+          conditions:
+          - comparison_operator: contains
+            id: 3d657c65-8eab-42eb-bb59-9fe6d290e794
+            value: gemini-2.5-pro-preview-03-25
+            varType: string
+            variable_selector:
+            - '1742442590290'
+            - model
+          id: d97ba9b5-bbc5-4978-b254-05ff2219f724
+          logical_operator: and
+        - case_id: 1aaf0de3-fafc-4f6a-8c04-38cd5346612a
+          conditions:
+          - comparison_operator: contains
+            id: 753dc0ed-9412-48cb-abc9-df1e503c24ca
+            value: o1
+            varType: string
+            variable_selector:
+            - '1742442590290'
+            - model
+          id: 1aaf0de3-fafc-4f6a-8c04-38cd5346612a
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: '[決策] 模型選擇器'
+        type: if-else
+      height: 414
+      id: '1746000589347'
+      position:
+        x: 3226.9424614212594
+        y: 81.39061682422093
+      positionAbsolute:
+        x: 3226.9424614212594
+        y: 81.39061682422093
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: test
+        desc: ''
+        height: 236
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"意圖處理階段","type":"text","version":1}],"direction":"ltr","format":"left","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: '  (3)'
+        type: ''
+        width: 1098
+      height: 236
+      id: '17460091772470'
+      position:
+        x: 3657.177597190748
+        y: 683.1216766190366
+      positionAbsolute:
+        x: 3657.177597190748
+        y: 683.1216766190366
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 1098
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.9
+          mode: chat
+          name: gemini-2.0-flash
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: 09ddf340-a502-4a03-89b5-b69469d3d650
+          role: system
+          text: "你是一位意圖分類器。請仔細閱讀「輸入文本」，並根據下方【意圖定義】選出**唯一**最符合的意圖；若完全不符，請標為 **\"None\"\
+            **。\n輸入文本：{{#1742442590290.text#}}\n【意圖定義】\n查看UE的吞吐量\n - 查詢或篩選 UE 之連線狀態、訊號品質、吞吐量統計。\
+            \  \n查詢 Cell 裡面的 SINR 熱圖\n - 取得 Cell 內 SINR 數值、分布或視覺化（SINR Map）。  \n干擾演算法預測\n\
+             - 使用干擾抑制／優化演算法做預測、評估或建議。  \n干擾演算法執行\n - 直接執行干擾抑制演算法，進行優化動作。\n\n【輸出格式】\
+            \  \n符合其一：\n{\n  \"intent\": \"<意圖名稱>\", \n  \"reason\": \"<簡述歸類依據>\"\n\
+            }\n\n全不符合：\n{\n  \"intent\": \"None\",\n  \"reason\": \"<簡述原因>\"\n}\n\
+            請嚴格遵守以上 JSON 格式，除了 JSON 內容外不得輸出任何其他文字。"
+        selected: false
+        title: '[LLM 處理] 文本轉單一意圖器 gemini-2.0-flash'
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17460091772471'
+      position:
+        x: 3690.4745688791554
+        y: 758.7749589387
+      positionAbsolute:
+        x: 3690.4745688791554
+        y: 758.7749589387
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17460091772471.text#}}'
+        desc: ''
+        selected: false
+        title: '[回覆] 文本轉單一意圖器 (2)'
+        type: answer
+        variables: []
+      height: 105
+      id: '17460091772472'
+      position:
+        x: 4081.8432911488917
+        y: 758.7749589387
+      positionAbsolute:
+        x: 4081.8432911488917
+        y: 758.7749589387
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: test
+        desc: ''
+        height: 236
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"意圖處理階段","type":"text","version":1}],"direction":"ltr","format":"left","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: '  (4)'
+        type: ''
+        width: 1098
+      height: 236
+      id: '17460095778580'
+      position:
+        x: 3661.1565938587564
+        y: 963.673261527523
+      positionAbsolute:
+        x: 3661.1565938587564
+        y: 963.673261527523
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 1098
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.9
+          mode: chat
+          name: gemini-2.5-flash-preview-04-17
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: 09ddf340-a502-4a03-89b5-b69469d3d650
+          role: system
+          text: "你是一位意圖分類器。請仔細閱讀「輸入文本」，並根據下方【意圖定義】選出**唯一**最符合的意圖；若完全不符，請標為 **\"None\"\
+            **。\n輸入文本：{{#1742442590290.text#}}\n【意圖定義】\n查看UE的吞吐量\n - 查詢或篩選 UE 之連線狀態、訊號品質、吞吐量統計。\
+            \  \n查詢 Cell 裡面的 SINR 熱圖\n - 取得 Cell 內 SINR 數值、分布或視覺化（SINR Map）。  \n干擾演算法預測\n\
+             - 使用干擾抑制／優化演算法做預測、評估或建議。  \n干擾演算法執行\n - 直接執行干擾抑制演算法，進行優化動作。\n\n【輸出格式】\
+            \  \n符合其一：\n{\n  \"intent\": \"<意圖名稱>\", \n  \"reason\": \"<簡述歸類依據>\"\n\
+            }\n\n全不符合：\n{\n  \"intent\": \"None\",\n  \"reason\": \"<簡述原因>\"\n}\n\
+            請嚴格遵守以上 JSON 格式，除了 JSON 內容外不得輸出任何其他文字。"
+        selected: false
+        title: '[LLM 處理] 文本轉單一意圖器 gemini-2.5-flash-preview-04-17'
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17460095778581'
+      position:
+        x: 3688.9537009743754
+        y: 1039.3265438471865
+      positionAbsolute:
+        x: 3688.9537009743754
+        y: 1039.3265438471865
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17460095778581.text#}}'
+        desc: ''
+        selected: false
+        title: '[回覆] 文本轉單一意圖器 (3)'
+        type: answer
+        variables: []
+      height: 105
+      id: '17460095778582'
+      position:
+        x: 4085.8222878169
+        y: 1039.3265438471865
+      positionAbsolute:
+        x: 4085.8222878169
+        y: 1039.3265438471865
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: test
+        desc: ''
+        height: 236
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"意圖處理階段","type":"text","version":1}],"direction":"ltr","format":"left","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: '  (5)'
+        type: ''
+        width: 1098
+      height: 236
+      id: '17460096565520'
+      position:
+        x: 3662.6774617635365
+        y: 1251.4835497372715
+      positionAbsolute:
+        x: 3662.6774617635365
+        y: 1251.4835497372715
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 1098
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.9
+          mode: chat
+          name: gemini-2.5-pro-preview-03-25
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: 09ddf340-a502-4a03-89b5-b69469d3d650
+          role: system
+          text: "你是一位意圖分類器。請仔細閱讀「輸入文本」，並根據下方【意圖定義】選出**唯一**最符合的意圖；若完全不符，請標為 **\"None\"\
+            **。\n輸入文本：{{#1742442590290.text#}}\n【意圖定義】\n查看UE的吞吐量\n - 查詢或篩選 UE 之連線狀態、訊號品質、吞吐量統計。\
+            \  \n查詢 Cell 裡面的 SINR 熱圖\n - 取得 Cell 內 SINR 數值、分布或視覺化（SINR Map）。  \n干擾演算法預測\n\
+             - 使用干擾抑制／優化演算法做預測、評估或建議。  \n干擾演算法執行\n - 直接執行干擾抑制演算法，進行優化動作。\n\n【輸出格式】\
+            \  \n符合其一：\n{\n  \"intent\": \"<意圖名稱>\", \n  \"reason\": \"<簡述歸類依據>\"\n\
+            }\n\n全不符合：\n{\n  \"intent\": \"None\",\n  \"reason\": \"<簡述原因>\"\n}\n\
+            請嚴格遵守以上 JSON 格式，除了 JSON 內容外不得輸出任何其他文字。"
+        selected: false
+        title: '[LLM 處理] 文本轉單一意圖器 gemini-2.5-pro-preview-03-25'
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17460096565521'
+      position:
+        x: 3690.4745688791554
+        y: 1327.136832056935
+      positionAbsolute:
+        x: 3690.4745688791554
+        y: 1327.136832056935
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17460096565521.text#}}'
+        desc: ''
+        selected: false
+        title: '[回覆] 文本轉單一意圖器 (4)'
+        type: answer
+        variables: []
+      height: 105
+      id: '17460096565522'
+      position:
+        x: 4087.34315572168
+        y: 1327.136832056935
+      positionAbsolute:
+        x: 4087.34315572168
+        y: 1327.136832056935
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: test
+        desc: ''
+        height: 236
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"意圖處理階段","type":"text","version":1}],"direction":"ltr","format":"left","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: '  (2)'
+        type: ''
+        width: 1098
+      height: 236
+      id: '17466196916450'
+      position:
+        x: 3668.06788264846
+        y: 1537.195937562376
+      positionAbsolute:
+        x: 3668.06788264846
+        y: 1537.195937562376
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 1098
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            frequency_penalty: 0.3
+            presence_penalty: 0.2
+            temperature: 0.5
+            top_p: 0.85
+          mode: chat
+          name: o1
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 09ddf340-a502-4a03-89b5-b69469d3d650
+          role: system
+          text: "你是一位意圖分類器。請仔細閱讀「輸入文本」，並根據下方【意圖定義】選出**唯一**最符合的意圖；若完全不符，請標為 **\"None\"\
+            **。\n輸入文本：{{#1742442590290.text#}}\n【意圖定義】\n查看UE的吞吐量\n - 查詢或篩選 UE 之連線狀態、訊號品質、吞吐量統計。\
+            \  \n查詢 Cell 裡面的 SINR 熱圖\n - 取得 Cell 內 SINR 數值、分布或視覺化（SINR Map）。  \n干擾演算法預測\n\
+             - 使用干擾抑制／優化演算法做預測、評估或建議。  \n干擾演算法執行\n - 直接執行干擾抑制演算法，進行優化動作。\n\n【輸出格式】\
+            \  \n符合其一：\n{\n  \"intent\": \"<意圖名稱>\", \n  \"reason\": \"<簡述歸類依據>\"\n\
+            }\n\n全不符合：\n{\n  \"intent\": \"None\",\n  \"reason\": \"<簡述原因>\"\n}\n\
+            請嚴格遵守以上 JSON 格式，除了 JSON 內容外不得輸出任何其他文字。"
+        selected: false
+        title: '[LLM 處理] 文本轉單一意圖器 4o (1)'
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17466196916451'
+      position:
+        x: 3695.864989764079
+        y: 1612.8492198820395
+      positionAbsolute:
+        x: 3695.864989764079
+        y: 1612.8492198820395
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17466196916451.text#}}'
+        desc: ''
+        selected: false
+        title: '[回覆] 文本轉單一意圖器 (1)'
+        type: answer
+        variables: []
+      height: 105
+      id: '17466196916452'
+      position:
+        x: 4092.7335766066035
+        y: 1612.8492198820395
+      positionAbsolute:
+        x: 4092.7335766066035
+        y: 1612.8492198820395
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -771.2022543239016
+      y: 247.4521960934817
+      zoom: 0.37892914162759994
